@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -21,7 +22,7 @@ public class Player : MonoBehaviour {
 	void Update () {
 	
 		if (health <= 2 ) {
-			Application.LoadLevel(scene);
+            SceneManager.LoadScene("GameOver");
 		}
 	
 		transform.position = Vector2.MoveTowards(transform.position, targetPos, speed*Time.deltaTime);
