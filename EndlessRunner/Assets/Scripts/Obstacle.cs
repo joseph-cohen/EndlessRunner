@@ -6,11 +6,15 @@ public class Obstacle : MonoBehaviour {
 	public int damage = 1; 
 	public float speed = 5; 
 
+	public GameObject effect;
+	
+
 	void OnTriggerEnter2D(Collider2D other){ //Called whenever "Obstacle" collides with something, only gets called if object is marked as trigger.
 		if (other.CompareTag("Player")) {
 			
 			other.GetComponent<Player>().health -= damage;
 			Destroy(gameObject);
+			GameObject.Instantiate(effect, transform.position, Quaternion.identity);
 			Debug.Log(other.GetComponent<Player>().health);
 		}
 	}

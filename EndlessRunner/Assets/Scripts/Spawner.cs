@@ -19,14 +19,16 @@ public class Spawner : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		Debug.Log(startTime);
-		
 		if (spawnTime <= 0) {
 			
 			int rand = Random.Range(0, obstaclePatterns.Length);
 			Instantiate(obstaclePatterns[rand], transform.position, Quaternion.identity);
 			spawnTime = startTime;
 			
+			if (spawnTime < minTime) {
+				spawnTime = minTime;
+			}
+
 			if (startTime > minTime) {
 				startTime -= decreaseTime;
 			}
